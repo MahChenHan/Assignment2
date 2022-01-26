@@ -1,5 +1,13 @@
 # Assignment2
-E-Commerce Website.
-My project name is my E-Commerce Website. In the website the user will be able to shop for items and have an shopping experience on the mobile that comes with gamification features.
-Features. Reward point system. A Logo
-Technologies. Browser, HTML, CSS,
+## PlanetCommerce
+Our website name is 'PlanetCommerce'. Our website will be equipped with categories and subcategories for ease of navigation, as well as promoting the top sellers recently. A contact page will also be implemented, as well as minigames that not only compliment the website, but also rewards the users, be it discounts or special offers.
+
+## Features include
+- A reward point system
+- A Logo
+
+## Technologies used
+- HTML 
+- CSS
+- JQuery 
+- JavaScript
