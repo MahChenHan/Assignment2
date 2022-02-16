@@ -28,12 +28,13 @@ In addition, you may also use this section to discuss plans for additional featu
 
 ## Technologies Used
 
+
+- HTML 
+- CSS
 - [Visual Studio Code](https://code.visualstudio.com/) 
     - Integrated Development Environment (IDE) used.
 - [Adobe XD](https://www.adobe.com/sea/products/xd.html)
     - To make the wireframes of the website. (Desktop & Mobile).
-- HTML 
-- CSS
 - [JQuery](https://jquery.com)
     - The project uses **JQuery** to simplify DOM manipulation.
 - [JavaScript](https://www.javascript.com/)
@@ -43,16 +44,6 @@ In addition, you may also use this section to discuss plans for additional featu
     - To contain account-info, contact-form info, shipping-info.
 - * [VSC LiveShare Extension](https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare-pack) 
     - Used for real-time code editing.
-
-
-* [Adobe XD](https://www.adobe.com/sea/products/xd.html) → To make the wireframes of the website. (Desktop & Mobile).
-* [Adobe Photoshop](https://www.adobe.com/sea/products/photoshopfamily.html) → To create and edit placeholder images & icons.
-* [Adobe Premiere Pro](https://www.adobe.com/sea/products/premiere.html) → To edit pitch recordings.
-* [Bootstrap](https://getbootstrap.com/) → To make the responsive navigation bar, icons and more.
-* [RestDB](https://restdb.io/) → To contain account-info, contact-form info, shipping-info.
-* [localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage) → Property used to store & retrieve temporary data.
-* [VSC LiveShare Extension](https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare-pack) → Used for real-time code editing.
-* [OBS Studio](https://obsproject.com/) → To record pitch.
 
 
 ## Testing
