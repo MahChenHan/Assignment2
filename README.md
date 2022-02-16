@@ -1,14 +1,13 @@
 # Assignment2
 # PlanetCommerce
 
-Our website name is 'PlanetCommerce'. Our website will be equipped with categories and subcategories for ease of navigation, as well as promoting the top sellers recently. A contact page will also be implemented, as well as minigames that not only compliment the website, but also rewards the users, be it discounts or special offers.
+Our website name is 'PlanetCommerce'. Our website will be equipped with categories and subcategories for ease of navigation, as well as promoting the top sellers recently. A contact page will also be implemented, as well as minigames that not only compliment the website, but also rewards the users, be it discounts or special offers. 
  
 ## Design Process
  
-Provide us insights about your design process, focusing on who this website is for, what it is that they want to achieve and how your project is the best way to help them achieve these things.
-
-In particular, as part of this section we recommend that you provide a list of User Stories, with the following general structure:
-- As a user type, I want to perform an action, so that I can achieve a goal.
+* **Customers**
+    * Customers will be able to view a large variety of products, ranging from appliances to clothing.
+    * Customers would be able to earn rewards with certain purchases made.
 
 This section is also where you would share links to any wireframes, mockups, diagrams etc. that you created as part of the design process. 
 These files should themselves either be included as a pdf file in the project itself (in an separate directory)
@@ -29,11 +28,31 @@ In addition, you may also use this section to discuss plans for additional featu
 
 ## Technologies Used
 
+- [Visual Studio Code](https://code.visualstudio.com/) 
+    - Integrated Development Environment (IDE) used.
+- [Adobe XD](https://www.adobe.com/sea/products/xd.html)
+    - To make the wireframes of the website. (Desktop & Mobile).
 - HTML 
 - CSS
 - [JQuery](https://jquery.com)
     - The project uses **JQuery** to simplify DOM manipulation.
 - [JavaScript](https://www.javascript.com/)
+- [Bootstrap](https://getbootstrap.com/)
+    - To make the responsive navigation bar, carousel and more.
+- [RestDB](https://restdb.io/) 
+    - To contain account-info, contact-form info, shipping-info.
+- * [VSC LiveShare Extension](https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare-pack) 
+    - Used for real-time code editing.
+
+
+* [Adobe XD](https://www.adobe.com/sea/products/xd.html) → To make the wireframes of the website. (Desktop & Mobile).
+* [Adobe Photoshop](https://www.adobe.com/sea/products/photoshopfamily.html) → To create and edit placeholder images & icons.
+* [Adobe Premiere Pro](https://www.adobe.com/sea/products/premiere.html) → To edit pitch recordings.
+* [Bootstrap](https://getbootstrap.com/) → To make the responsive navigation bar, icons and more.
+* [RestDB](https://restdb.io/) → To contain account-info, contact-form info, shipping-info.
+* [localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage) → Property used to store & retrieve temporary data.
+* [VSC LiveShare Extension](https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare-pack) → Used for real-time code editing.
+* [OBS Studio](https://obsproject.com/) → To record pitch.
 
 
 ## Testing
