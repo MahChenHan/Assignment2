@@ -42,7 +42,7 @@ In addition, you may also use this section to discuss plans for additional featu
     - To make the responsive navigation bar, carousel and more.
 - [RestDB](https://restdb.io/) 
     - To contain account-info, contact-form info, shipping-info.
-- * [VSC LiveShare Extension](https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare-pack) 
+- [VSC LiveShare Extension](https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare-pack) 
     - Used for real-time code editing.
 
 
