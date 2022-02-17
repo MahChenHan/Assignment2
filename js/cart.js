@@ -1,0 +1,202 @@
+var cart = JSON.parse(localStorage.getItem('cart')); // Get shopping bag data from local storage
+var totalPrice = 0; // Inital total price set as 0
+
+$(document).ready(function () {
+    $('.bag-loading').show(); // Show bag loading icon
+    checkEmpty(); // Check if the bag is empty
+
+    $('.table-body').on('click', ".delete", function(e) { // If user clicks on delete button
+        $(".table-body").html(""); // Clear the table
+        totalPrice = 0; // Set back total price variable to 0
+        cart.splice(e.target.attributes.value.value, 1); // Remove item from shopping bag
+        localStorage.setItem('cart', JSON.stringify(cart)); // Reset the local storage shopping bag array
+        checkEmpty(); // Check if the bag is empty
+    });
+
+    $('.delete-all').on('click', function(e) { // If user clicks delete all button
+        totalPrice = 0;
+        localStorage.removeItem('cart'); // Remove shopping bag from array
+        $(".table-body").html(""); // Clear the table
+        checkEmpty(); // Check if the bag is empty
+    });
+
+    if (accLoggedIn != null) {
+        $('.not-loggedin-text').hide();
+        $("#checkout-button").attr("disabled", false);
+        $.ajax({ // Get account data from database
+            "async": true,
+            "crossDomain": true,
+            "url": `https://planetcommerce-d339.restdb.io/rest/account-info/${accLoggedIn[0]}`,
+            "method": "GET",
+            "headers": {
+                "content-type": "application/json",
+                "x-apikey": APIKEY,
+                "cache-control": "no-cache"
+            }
+        })
+
+        .done(function(account) {
+            $("#shopping-form").submit(function(e) {
+                $('#checkout-button').hide(); // Hide checkout button when loading
+                $('.checkout-loading').show(); // Show loading icon when user click checkout button
+                e.preventDefault();
+                if (account.balance - totalPrice < 0) { // Check if account has sufficient balance
+                    $('#checkout-button-text').show(); // Show check out button if user logged in
+                    setInterval(function(){$('#checkout-button-text').hide();}, 3000); // Hide check out button after 3 seconds
+                }
+                else {
+                    let jsondata = {
+                        "name": $("#user-name").val(),
+                        "shippingAddress": $("#shipping-address").val(),
+                        "contactNumber": $("#contact-number").val(),
+                        "emailAddress": $("#email-address").val(),
+                        "specialRequest": $("#special-request").val()
+                    };
+                    
+                    $.ajax({
+                        "async": true,
+                        "crossDomain": true, 
+                        "url": "https://sneakerzone-11b9.restdb.io/rest/shipping-info",
+                        "method": "POST",
+                        "headers": {
+                            "content-type": "application/json",
+                            "x-apikey": APIKEY,
+                            "cache-control": "no-cache"
+                        },
+                        "processData": false,
+                        "data": JSON.stringify(jsondata)
+
+                    }).done(function () {
+                        account.balance -= totalPrice; // Deduct total price from account balance
+                        updateAccount(account); // Update account information
+                        addTransactionInfo(account._id, account.balance, totalPrice, shoppingBag, new Date($.now())); // Add transaction info
+                    }).fail(function() { alert('Please fill up the shipping form!'); }); // If fail to POST, alert user to fill up form
+                }
+            });
+        });
+    }
+    else { // If user not logged in
+        $('.not-loggedin-text').show(); // Display warning text
+        $("#checkout-button").attr("disabled", true); // Disable check out button
+    }
+});
+
+// Fetch products according to shoppingBag localStorage
+async function loadBag() {
+    var products = [];
+    cart.map(s => {
+        let product = fetch(`https://example-data.draftbit.com/products/${s[0]}`)
+        .then(res => res.json())
+        .then(data => {
+            return data;
+        });
+        products.push(product);
+    });
+    products = await Promise.all(products);
+    displayBag(products);
+}
+
+// Display products in shoppingBag table
+function displayBag(products) {
+    $('.bag-loading').hide();
+    $(".table-body").html("");
+    var htmlString = '';
+    for (var i = 0; i < cart.length; i++) {
+        if (cart[i][0] == products[i].id) {
+            var productPrice = products[i].list_price * cart[i][1];
+            totalPrice += productPrice;
+            totalRounded = Math.round(totalPrice * 100) / 100
+            htmlString += (`
+                <tr>
+                    <th scope="row">${i + 1}</th>
+                    <td><img src = ${products[i].image_url} style = "max-width: 500px;" id = "cart-img" onclick=selectCard('${products[i].id}')></img></td>
+                    <td style = "font-size: 20px;" >${products[i].name}</td>
+                    <td style = "font-size: 20px;" >${cart[i][1]}</td>
+                    <td style = "font-size: 20px;" >${cart[i][2]}</td>
+                    <td style = "font-size: 20px;" >$${productPrice}</td>
+                    <td class="delete" value="${i}" style = "font-size: 20px;">Delete</td>
+                </tr>
+            `);
+        }
+    }
+    $('.table-body').html(htmlString);
+    $('#total-cost').html(`$${totalRounded}`);
+}
+
+function checkEmpty() { // If the shopping bag is empty, show "shopping bag is empty" message, Otherwise, load shopping bag items
+    if (localStorage.getItem('cart') == null || localStorage.getItem('cart') == "[]") {
+        $('.table-body').append(`<tr><th colspan="6" style="text-align: center;">Your bag is empty!</th></tr>`);
+        $('footer').css('position','absolute');
+        $('footer').css('bottom','0');
+        $('.total-cost-header').hide();
+        $('.shopping-form-box').hide();
+        $('.delete-all').hide();
+        $('.bag-loading').hide();
+    }
+
+    else { loadBag(); }
+}
+
+// Add account transaction information
+function addTransactionInfo(userID, balance, moneySpent, purchaseData, purchaseDateTime) {
+    var jsondata = {
+        "userID": userID, 
+        "balance": balance, 
+        "moneySpent": moneySpent, 
+        "purchaseType": 'Product',
+        "purchaseData": purchaseData, 
+        "purchaseDateTime": purchaseDateTime
+    };
+
+    $.ajax({
+        "async": true,
+        "crossDomain": true,
+        "url": "https://sneakerzone-11b9.restdb.io/rest/transaction-info",
+        "method": "POST",
+        "headers": {
+            "content-type": "application/json",
+            "x-apikey": APIKEY,
+            "cache-control": "no-cache"
+        },
+        "processData": false,
+        "data": JSON.stringify(jsondata)
+    
+    }).done(function() {
+        $('#checkout-button').show(); // Show checkout button after finish loading
+        $('.checkout-loading').hide(); // Hide loading icon
+        localStorage.removeItem('cart'); // Clear shopping bag when checked out
+        $(".table-body").html(""); // Reset table html
+        checkEmpty(); // Check if bag empty
+        $('#success-purchase-text').show(); // Display success message
+        setInterval(function(){$('#success-purchase-text').hide();}, 10000); // Show successful message
+    });
+}
+
+function updateAccount(account) {
+    var jsondata = { 
+        "name": account.name, 
+        "dob": account.dob, 
+        "password": account.password, 
+        "balance": account.balance, 
+        "coupon": account.coupon
+    };
+
+    $.ajax({
+        "async": true,
+        "crossDomain": true,
+        "url": `https://sneakerzone-11b9.restdb.io/rest/account-info/${account._id}`,
+        "method": "PUT",
+        "headers": {
+            "content-type": "application/json",
+            "x-apikey": APIKEY,
+            "cache-control": "no-cache"
+        },
+        "processData": false,
+        "data": JSON.stringify(jsondata)
+    });
+}
+
+function selectCard(productID) {
+    localStorage.setItem("viewProductId", productID); // Store the sneaker ID in local storage
+    window.location.href = "product.html";
+}
