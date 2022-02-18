@@ -3,6 +3,7 @@ const searchBar = document.getElementById('searchBar');
 let category, query;
 
 $(document).ready(function() {
+    $(".loading-icon").hide(); 
     displayProducts(`${url}`); 
 
 
