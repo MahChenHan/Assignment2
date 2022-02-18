@@ -6,8 +6,8 @@ Our website name is 'PlanetCommerce'. Our website will be equipped with categori
  
 * **Customers**
     * Customers will be able to view a large variety of products, ranging from appliances to clothing.
-    * Customers would be able to earn rewards with certain purchases made.
-    * 
+    * Customers would be able to earn a free spin when checking out with the chance of winning discounts.
+    
 ## Features
 ### Existing Features
 - A Logo
