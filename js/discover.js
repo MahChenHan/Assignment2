@@ -51,6 +51,7 @@ function displayProducts(url) {
                     </li>
                 `);
             }
+            
             $(".loading-icon").hide(); 
         });
     });
