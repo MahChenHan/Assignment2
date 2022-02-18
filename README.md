@@ -51,10 +51,9 @@ Our website name is 'PlanetCommerce'. Our website will be equipped with categori
 
 ### Content
 - Draftbit API → Products data API.
-- The text for section Y was copied from the [Wikipedia article Z](https://en.wikipedia.org/wiki/Z)
 
 ### Media
-- The photos used in this site were obtained from ...
+- The photos used in this site were obtained from Uniqlo.
 
 ### Acknowledgements
 - We received inspiration for this project from Uniqlo.
