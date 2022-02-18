@@ -1,3 +1,7 @@
+### Github deployment link
+- https://mahchenhan.github.io/PlanetCommerce/
+### Pitch for our website
+- 
 # PlanetCommerce
 
 Our website name is 'PlanetCommerce'. Our website will be equipped with categories and subcategories for ease of navigation, as well as promoting the top sellers recently. A contact page will also be implemented, as well as minigames that not only compliment the website, but also rewards the users, be it discounts or special offers. 
@@ -58,5 +62,4 @@ Our website name is 'PlanetCommerce'. Our website will be equipped with categori
 ### Acknowledgements
 - We received inspiration for this project from Uniqlo.
 
-### Github deployment link
-- https://mahchenhan.github.io/PlanetCommerce/
+
