@@ -34,7 +34,7 @@ In addition, you may also use this section to discuss plans for additional featu
 - [Visual Studio Code](https://code.visualstudio.com/) 
     - Integrated Development Environment (IDE) used.
 - [Adobe XD](https://www.adobe.com/sea/products/xd.html)
-    - To make the wireframes of the website. (Desktop & Mobile).
+    - To make the wireframes of the website.
 - [JQuery](https://jquery.com)
     - The project uses **JQuery** to simplify DOM manipulation.
 - [JavaScript](https://www.javascript.com/)
@@ -66,11 +66,14 @@ If this section grows too long, you may want to split it off into a separate fil
 ## Credits
 
 ### Content
+- Draftbit API → Products data API.
 - The text for section Y was copied from the [Wikipedia article Z](https://en.wikipedia.org/wiki/Z)
 
 ### Media
 - The photos used in this site were obtained from ...
 
 ### Acknowledgements
+- I received inspiration for this project from Uniqlo.
 
-- I received inspiration for this project from X
+### Github deployment link
+- https://mahchenhan.github.io/PlanetCommerce/
