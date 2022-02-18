@@ -31,10 +31,11 @@ We designed this website with the everyday end-user in mind, focusing on ease-of
 
 - HTML 
 - CSS
-- [Adobe XD](https://www.adobe.com/sea/products/xd.html)
-    - Making of wireframe.
+
 - [JQuery](https://jquery.com)
 - [JavaScript](https://www.javascript.com/)
+- [Adobe XD](https://www.adobe.com/sea/products/xd.html)
+    - Making of wireframe.
 - [Bootstrap](https://getbootstrap.com/)
     - To make the responsive navigation bar, carousel and more.
 - [RestDB](https://restdb.io/) 
