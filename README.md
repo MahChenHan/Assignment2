@@ -7,7 +7,7 @@
 Our website is named 'PlanetCommerce'. This website will be a one-stop shop for users in need of almost everything, hence the name 'PlanetCommerce'. It will supply products of any kind, ranging from kitchen appliances to clothing. It will also reward users for checking out with a game that gives them a chance of winning discounts. We used Draftbit's products API to get our items.
  
 ## Design Process
-[Wireframe for PlanetCommerce](https://xd.adobe.com/view/72239bdd-a8ae-44e3-919f-be5d3f50a356-2770/)
+[Wireframe for PlanetCommerce](https://xd.adobe.com/view/72239bdd-a8ae-44e3-919f-be5d3f50a356-2770/)\
 We designed this website with the everyday end-user in mind, focusing on ease-of-access and simplicity. 
 * **Customers**
     * Customers will be able to view a large variety of products, ranging from appliances to clothing.
