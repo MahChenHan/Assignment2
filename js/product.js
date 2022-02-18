@@ -1,64 +1,56 @@
 $(document).ready(function() {
   productId = localStorage.getItem('viewProductId');
   loadProducts(productId);
+  $(".load-atc").hide();
   var cart;
-  if (localStorage.getItem('cart') != null) { // If user has an exisiting shopping bag, get the shopping bag array
+  if (localStorage.getItem('cart') != null) { 
       cart = JSON.parse(localStorage.getItem('cart'));
   }
   
-  else { // Otherwise, create an empty shopping bag array
+  else { 
       cart = [];
   }
 
   $(".qty").keyup(function(e) {
-    if (e.keyCode === 13) { // If user press enter
-      e.preventDefault(); // Prevent page refresh
-      if ($(".qty").val() <= 0) $(".qty").val(1); // If user set their input as less than or equal to 0, set back to 1
+    if (e.keyCode === 13) { 
+      e.preventDefault(); 
+      if ($(".qty").val() <= 0) $(".qty").val(1); 
     }
 
   });
 
-  $("#addtoCart").click(function() { // If user clicks add to bag
-      $("#addtoCart").hide(); // Hide the add to bag button
-
-      if ($(".qty").val() <= 0) $(".qty").val(1); // If user set their input as less than or equal to 0, set back to 1
+  $("#addtoCart").click(function() { 
+      $(".atc-pop").show();
+      if ($(".qty").val() <= 0) $(".qty").val(1); 
+      var qty = Number($(".qty").val()); 
+      var item = [productId, qty, size]; 
+      var notDuplicate = true; 
       
-      var qty = Number($(".qty").val()); // Otherwise, get the value of the qty input
-      var item = [productId, qty, size]; // Item array to store the inputs the user set
-      var notDuplicate = true; // Create a not duplicate variable for check
-      console.log("hi2");
-      
-      // Check if the user has already added the same sneaker with the same size
       for (var i = 0; i < cart.length; i++) {
         if (item[0] === cart[i][0] && item[2] === cart[i][2]) {
-          cart[i][1] += item[1]; // Add the qty together if they are the same
+          cart[i][1] += item[1]; 
           notDuplicate = false;
-          console.log("hi1");
         }
       }
 
-      if (notDuplicate) cart.push(item); // Otherwise, add the item
+      if (notDuplicate) cart.push(item); 
       localStorage.setItem('cart', JSON.stringify(cart));
       setTimeout(function() {
-        $("#addtoCart").show(); 
-      }, 2000);
-      console.log("hi");
+        $(".atc-pop").hide();
+      }, 1400);
 
   });
 
-    // +/- qty button increment
     $(".incre-button").on("click", function() {
             var $button = $(this);
             var oldValue = $button.parent().find("input").val();
         
             if ($button.text() == "+") { 
-                // Don't allow incrementing above 99
                 if (oldValue >= 1 && oldValue < 99) newVal = parseFloat(oldValue) + 1;
                 else newVal = 1;
             } 
 
             else {
-                // Don't allow decrementing below 1
                 if (oldValue > 1) newVal = parseFloat(oldValue) - 1;
                 else newVal = 1;
             }
@@ -80,26 +72,25 @@ function loadProducts(product_id) {
       $('.product-description').append(data.description);
       
       getstar(data.average_product_rating);
-      checkcategory(data.category); // Check the category size
+      checkcategory(data.category); 
   });
 }
 
 
 function getstar(ratings) {
   const starTotal = 5 
-  // 2
+
   const starPercentage = (ratings / starTotal) * 100;
-  // 3
+
   const starPercentageRounded = `${(Math.round(starPercentage / 4) * 4)}%`;
-  // 4
+
   document.querySelector(`.product-rating .stars-inner`).style.width=starPercentageRounded; 
 }
 
 function checkcategory(category) {
   var string = '';
-  switch(category) {
-      
-    case 'underwear & socks': // If the sneaker is for men, get sizes from US6 to US12
+  switch(category) {   
+    case 'underwear & socks': 
     case 'pants':
     case `women's jeans`:
     case `pants & leggings`:
@@ -159,15 +150,20 @@ function checkcategory(category) {
 
     }
 
+    case null:
     case '':
+    case `view all`:
+    case `wall decor`:
+    case `sale`:
+    case `$30-$50 handbags & wallets`:
+    case `comforters`:
+    {
       $('.product-category').html(`This item has no category in the database.`);
-      //$('.size').html();
-      $('.product-size .btn-group').style.width =" 0px;";
       size = '';
       break;
-    
+    }
   }
 
 }
 
-function setSize(value) { size = value; } // If user clicks on a size radio button, set the size value to size variable
+function setSize(value) { size = value; } 
