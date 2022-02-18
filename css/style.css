@@ -2,13 +2,18 @@
     font-family: 'Staatliches', cursive;
 }
 
-/* scrolls down the page smoothly */
+lottie-player {
+    margin: 0 auto;
+}
+
+/* scrolls along the page smoothly */
 html {   scroll-behavior: smooth;  }
 
 html, body {
     height: 100%;
 }
 
+/* ScrollToTop Button */
 #btnScrollToTop {
     position: fixed;
     right: 10px;
@@ -17,15 +22,15 @@ html, body {
     height: 50px;
     border-radius: 50%;
     background: #e62739;
-    box-shadow: 0 0 10px rgba(0,0,0,0.25);
     color:#ffffff;
     border: none;
-    outline:none;
+    outline: 2px solid darkgrey;
     cursor: pointer;
 }
 
-#btnScrollToTop:active{
-    background:#cc2333;
+#btnScrollToTop:hover{
+    background:white;
+    color:red;
 }
 
 
@@ -60,16 +65,14 @@ h2 {
     color: red;
 }
 
-.mobile-line, .nav-bag-mobile {
-    display: none;
-}
 
-#login-text, #name-text {
+#checkout-text, #name-text {
     color: black; 
     cursor: pointer;
+    font-size: 50px;
 }
 
-
+/* Footer Styling */
 footer {
     background-color: #000000;
     height: 5em;
@@ -77,11 +80,6 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-a:hover {
-    color: red
-    !important;
 }
 
 #footer-text {
@@ -124,12 +122,10 @@ a:hover {
 .btn:hover, .btn-check:checked+.btn, .btn-check:active+.btn-outline-primary {
     background-color: black;
     border-color: black;
-    color: white;
 }
 
 .btn-check:focus + .btn, .btn:focus {
     outline: 0;
-    box-shadow: 0 0 0 0.25rem rgba(79, 53, 155, 0.25);
 }
 
 .btn-danger {
@@ -142,38 +138,18 @@ a:hover {
     background-color: #000 
 }
 
-/* ---------- Animations ---------- */
-/* Glow - Button Animation */
-.hvr-glow {
-    display: inline-block;
-    vertical-align: middle;
-    -webkit-transform: perspective(1px) translateZ(0);
-    transform: perspective(1px) translateZ(0);
-    -webkit-transition-duration: 0.3s;
-    transition-duration: 0.3s;
-    -webkit-transition-property: box-shadow;
-    transition-property: box-shadow;
-}
-
-.hvr-glow:hover, .hvr-glow:focus, .hvr-glow:active {
-    box-shadow: 0 0 12px black;
-}
 
 /* Popup modal */
-.login-box, .create-box {
+.checkout-box {
     text-align: center;
     padding: 24px;
 }
 
-#create-form-text-error, #login-form-text-error, #account-bal-error {
-    color: red;
-}
-
-.login-box > form {
+.checkout-box > form {
     margin-top: 24px;
 }
 
-.login-box > form > .form-group, .create-box > form > .form-group {
+.checkout-box > form > .form-group, .create-box > form > .form-group {
     margin-top: 24px;
     text-align: left;
 }
@@ -184,24 +160,12 @@ a:hover {
     margin-top: 24px;
 }
 
-.changePass-box > form > .button-group {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-#login-button, #create-button, .button-group > h6, #login-header-text  {
-    margin: 0;
-}
-
-#createModalButton, #loginModalButton {
+#checkoutModalButton {
     color:black;
     cursor: pointer;
 }
 
-/* --------------------------------------- Index Page --------------------------------------- */
-
-/* Main header section - Carousel */
+/* Carousel styling */
 .carousel {
     cursor: pointer;
 }
@@ -285,7 +249,7 @@ a:hover {
     justify-content: center;
 }
 
-/* Individual displayed cards */
+/* Product Cards */
 .card {
     height: 200px;
     min-width: 600px;
@@ -297,8 +261,7 @@ a:hover {
 }
 
 .card:hover {
-    border: #4F359B solid 1px;
-    box-shadow: inset 0 0 4px #4F359B;
+    border: red solid 1px;
     cursor: pointer;
 }
 
@@ -312,7 +275,7 @@ a:hover {
     flex-direction: column;
 }
 
-/* --------------------------------------- Explore Page ------------------------------------- */
+/* Discover Styling */
 
 .discover {
     padding: 24px;
@@ -356,6 +319,8 @@ a:hover {
     margin-left: 12px;
 }
 
+
+/* Product Styling */
 .stars-outer {
     display: inline-block;
     position: relative;
@@ -419,7 +384,7 @@ a:hover {
     font-size: 20px;
 }
 
-.products-list_price {
+.products-list_price, .products-price {
     color: #000;
     font-size: 24px;
 }
@@ -462,8 +427,6 @@ a:hover {
     justify-content: center;
     padding: 0 42px 42px 42px;
 }
-
-/* --------------------------------------- Product Page ------------------------------------- */
 
 .product {
     display: flex;
@@ -539,6 +502,10 @@ a:hover {
     width: 40px;
 }
 
+#cart-img:hover {
+    cursor: pointer;
+}
+
 .add-to-cart-box {
     display: flex;
     justify-content: left;
@@ -549,266 +516,38 @@ a:hover {
     width: 40%;
 }
 
-/* --------------------------------------- Game Page ------------------------------------- */
-
-.games-header-text {
-    padding: 1em 5em 0 5em;
-}
-
-.game-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
-.game-box {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    width: 30em;
-    height: 30em;
-    border: #000 solid 1px;
-    margin-bottom: 6em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #000;
-    flex-direction: column;
-    box-shadow: 0 3px 5px rgba(100, 100, 100, 0.5);
-}
-
-/* Game header titles - before play */
-.game-box > h2 {
-    font-weight: 600;
-    font-size: 32px;
-}
-
-/* Game header titles in modal */
-.spin-text-box > h2, .flip-text-box > h2 {
-    font-weight: 600;
-    font-size: 32px;
-    margin-top: 34px;
-}
-
-.not-loggedin-text {
-    color: red;
-    font-weight: 700;
-    margin-bottom: 1em;
-    display: none;
-}
-
-#countdown-box {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0.5em;
-}
-
-.countdown-timer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 70px;
-    height: 70px;
-    border: red solid 1px;
-    flex-direction: column;
-    font-size: 25px;
-}
-
-.countdown-text {
-    font-size: 12px;
-}
-
-#countdown-flip, #countdown-spin {
-    margin-top: 10px;
-}
-
-#spinNWinModal, #coinFlipModal {
-    padding: 0;
-}
-
-.game-loading-box {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 /* Spin N Win Game */
-.canvas-box {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.spin-Box {
+    background-color: black;
 }
 
-.spin-text-box, .flip-text-box {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+text{
+    font-size:20px;
+    pointer-events:none;
 }
 
-#spin-text-error, #flip-text-error { 
-    color: red; 
-    display: none;
-    text-align: center;
-}
-
-/* Coin Flip Game */
-#coin {
-    margin: 0 auto;
-    width: 180px;
-    height: 180px;
-    position: relative;
-}
-
-#coin div {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    box-shadow: inset 0 0 45px rgba(255,255,255,.3), 0 12px 20px -10px rgba(0,0,0,.4);
-    backface-visibility: hidden;
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-}
-
-.coin-flip-button-box {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 70px;
-}
-
-.coin-flip-button-box > button {
-    width: 200px;
-}
-
-#heads-button, #tails-button {
-    margin: 0;
-}
-
-.side-a { 
-    z-index: 100;
-    background-color: red; 
-}
-
-.side-b { 
-    background-color: #3e3e3e; 
-    transform: rotateY(-180deg);
-}
-  
-#coin {
-    transition: transform 1s ease-in;
-    transform-style: preserve-3d;
-}
-  
-#coin.heads {
-    animation: flipHeads 3s ease-out forwards;
-}
-#coin.tails {
-    animation: flipTails 3s ease-out forwards;
-}
-  
-@keyframes flipHeads {
-    from { transform: rotateY(0);}
-    to { transform: rotateY(1800deg);}
-}
-@keyframes flipTails {
-    from {transform: rotateY(0); }
-    to {transform: rotateY(1980deg); }
-}
-
-/* --------------------------------------- Account Page ------------------------------------- */
-
-.account { padding: 38px }
-
-.account > section > h4 {
-    color: red;
-    font-size: 20px;
-    margin-top: 15px;
-    font-weight: 900;
-}
-
-.account > section > h5 {
-    color: #000000;
-    font-size: 18px;
-    font-weight: 900;
-}
-
-.account > section { margin-bottom: 48px }
-
-.account > section > h3 {
-    color: #888;
-    font-size: 32px;
-    margin: 0;
+#chart{
+    position:absolute;
+    background-color: white;
+    padding-right: 50px;
+    width:600px;
+    height:600px;
 }
 
 #nav-tab > .nav-link {
     padding-left: 16px;
 }
 
-/* Daily Rewards */
-#daily-collect-text, #topup-bal-text {
-    display: none;
-    color: #4a9440;
-    font-weight: 500;
-}
-
-.daily-button-box {
-    display: flex;
-    max-width: 60%;
-    flex-wrap: wrap;
-}
-
-.dailyButton {
-    width: 80px;
-    margin: 2px;
-}
-
-.dailyButton:disabled {
-    color: #000000;
-    opacity: 0.4;
-}
-
-/* Dashboard */
-.chart-box {
-    position: relative;
-    height: 70vh;
-    width: 100vw;
-}
-
-.chart-box {
-    max-width: 100%;
-}
-
-.chart-loading-box {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Account settings section */
-.account-settings {
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    color: red;
-}
-
-.account-settings > a {
-    color: red;
-    text-decoration: none;
-}
-
+/* Modal Styling */
 .modal-content { border-radius: 0; }
 
 .modal-title {
     color: #000;
-    font-weight: 700;
+    font-weight: bold;
+    font-size: 40px;
+}
+.modal-body {
+    padding-top: 0;
 }
 
 .modal-body > section {
@@ -821,9 +560,10 @@ a:hover {
 
 .modal-body > div > p { margin: 0; }
 
-/* --------------------------------------- Shopping Bag ------------------------------------- */
 
-.shop-header { padding: 38px }
+/* Cart Styling */
+
+.cart-header { padding: 38px }
 
 .delete:hover {
     color: black;
@@ -834,7 +574,7 @@ a:hover {
     color: #FFF;
 }
 
-#cart-img:hover {
+#img:hover {
     cursor: pointer;
 }
 
@@ -843,16 +583,16 @@ a:hover {
     max-width: 30%;
 }
 
-.table-box, .shopping-form-box { 
+.table-box, .cart-form-box { 
     padding: 0 38px 38px 38px; 
     height: auto;
 }
 
-.shopping-form-box > form > .form-group {
+.cart-form-box > form > .form-group {
     margin-top: 30px;
 }
 
-.shopping-form-box > form > .form-group > textarea {
+.cart-form-box > form > .form-group > textarea {
     resize: none;
     height: 12em;
 }
@@ -864,15 +604,9 @@ a:hover {
     color: #FF0000;
 }
 
-#success-purchase-text {
-    color: #08962c;
-    text-align: center;
-    margin-top: 24px;
-}
-
 .total-cost-header { padding: 38px 38px 0 38px }
 
-.bag-button-box {
+.black-button-box {
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
@@ -880,8 +614,9 @@ a:hover {
     margin-top: 30px;
 }
 
-#checkout-button-text {
-    color: #FF0000;
+#checkout-text {
+    color: white;
+    font-size: 30px;
 }
 
 .delete {
@@ -889,620 +624,13 @@ a:hover {
     color: #FF0000;
 }
 
-/* --------------------------------------- Responsive ------------------------------------- */
-@media only screen and (max-width: 1300px) {
-    .carousel-feature-slide img {
-        transform: rotate(-25deg) scaleX(-1);
-    }
+/* Contact Styling */
 
-    .carousel-play-text {
-        top: 10%;
-        max-width: 10em;
-    }
+.contact-link {
+    text-decoration: none;
+    color: black;
 
 }
 
-@media only screen and (max-width: 1180px) {
-    .carousel-play-slide > .carousel-play-box > img {
-        bottom: 5em;
-    }
-}
+.contact-link:hover { color: red !important }
 
-@media only screen and (max-width: 1060px) {
-    .carousel-feature-slide img {
-        position: absolute;
-        top: 2%;
-        max-width: 50%;
-    }
-    /* Contact Styles */
-    .contact-section {
-        flex-direction: column;
-        height: auto;
-    }
-
-    .contact-details {
-        width: 100%;
-        margin: 0;
-        height: 40vh;
-    }
-
-    .contact-message {
-        width: 100%;
-        margin: 0;
-        height: 75vh;
-        padding: 0 10px 0 10px;
-        margin-bottom: 19%;
-    }
-
-    .contact-message > h5{
-        margin: 0
-    }
-
-    #keep-touch-text {
-        margin-left: 40%;
-    }
-
-    #contact-button {
-        margin-top: 12px;
-    }
-
-    .social-box {
-        width: 70%;
-        height: 10vh;
-        flex-direction: row;
-    }
-
-    .social-links-box > div {
-        margin-left: 14px;
-    }
-}
-
-@media only screen and (max-width: 1025px) {
-    .carousel {
-        height: 50vh;
-    }
-
-    .carousel-play-slide {
-        height: 50vh;
-    }
-
-    .carousel-play-slide > .carousel-play-box > img {
-        bottom: 0em;
-    }
-
-    .carousel-feature-slide {
-        height: 50vh;
-    }
-
-    .carousel-feature-slide > img {
-        top: 20%
-    }
-
-    .carousel-item > a > img {
-        position: static;
-        height: 50vh;
-    }
-
-    .carousel-caption {
-        top: 40%;
-    }
-
-    .carousel-feature-text {
-        top: 12%;
-    }
-
-    .carousel-play-text {
-        top: 15%;
-    }
-
-    /* Contact Styles */
-    .contact-details {
-        height: 30vh;
-    }
-
-    #keep-touch-text {
-        margin-left: 39%;
-    }
-
-    .social-box {
-        width: 80%;
-        height: 10vh;
-        flex-direction: row;
-    }
-
-    /* ----- Product Styles ----- */
-    .product {
-        flex-direction: column;
-        height: auto;
-    }
-
-    .product-img { 
-        width: 100%;
-    }
-
-    .product-info {
-        margin: 24px 0 0 0;
-    }
-
-    .product-options {
-        flex-direction: column;
-    }
-
-    .product-size {
-        margin-right: 0px;
-    }
-
-    .product-size > .btn-group {
-        width: auto;
-    }
-
-    .size > .btn {
-        width: 30%;
-    }
-
-    .product-qty {
-        margin-top: 24px;
-    }
-
-    .product-qty > .input-group > input {
-        max-width: none;
-    }
-}
-
-@media only screen and (max-width: 991px) { 
-    /* ----- Global Nav bar ----- */
-    .nav-link {
-        padding-left: 0;
-    }
-
-    .nav-bag-mobile {
-        display: contents;
-        padding-top: 0;
-    }
-    
-    .nav-bag-mobile-box {
-        display: flex;
-        align-items: center;
-    }
-
-    .mobile-line {
-        display: contents;
-    }
-
-    .carousel-caption > h5 {
-        font-size: 42px;
-        width: auto;
-    }
-    
-    .carousel-caption > p {
-        font-size: 16px;
-        max-width: none;
-    }
-} 
-
-@media only screen and (max-width: 800px) {
-    h2 {
-        font-size: 24px;
-    }
-
-    .container-fluid {
-        padding: 0;
-    }
-
-    /* ----- Global Styles ----- */
-    #footer-text {
-        text-align: center;
-        max-width: 26em;
-    }
-
-    .carousel-caption {
-        top: 35%;
-    }
-
-    .carousel-feature-text {
-        top: 2%;
-    }
-
-    .carousel-feature-text p, .carousel-feature-text h5 {
-        text-align: center;
-    }
-
-    .carousel-play-text {
-        top: 2%;
-        left: 35%;
-        max-width: 15em;
-    }
-
-    .carousel-caption > h5 {
-        text-align: center;
-    }
-
-    /* Carousel play slide */
-    .index-sneaker-cards > .card {
-        padding-top: 8px;
-        flex-direction: column;
-        height: 280px;
-        min-width: 250px;
-    }
-
-    .index-product-cards > .card > img {
-        max-width: 200px;
-    }
-
-    .index-product-cards > .card > .card-body {
-        display: flex;
-        flex-direction: column;
-        padding: 0 12px 0 12px;
-    }
-
-    .product-brand, .product-price  {
-        text-align: center;
-        font-size: 18px;
-    }
-
-    .product-name {
-        color: #888;
-        text-align: center;
-        font-size: 11px;
-    }
-
-    /* ----- Explore Styles ----- */
-    .explore {
-        display: flex;
-        justify-items: center;
-        align-items: center;
-        flex-direction: column;
-    }
-
-    .explore > .sort-group {
-        margin-left: 0px;
-    }
-
-    .searchBar {
-        width: 100px;
-    }
-
-    .sneaker-card img {
-        margin-left: 12px;
-    }
-    
-    .sneaker-card {
-        min-width: 50%;
-    }
-
-    /* ----- Contact Styles ----- */
-    .contact-details {
-        height: 55vh;
-    }
-
-    #keep-touch-text {
-        margin-left: 35%;
-    }
-
-    .social-box {
-        flex-direction: column;
-        width: 40%;
-        height: 30vh;
-    }
-
-    /* ----- Account Styles ----- */
-    .account, .shop-header { padding: 24px }
-
-    .daily-button-box {
-        display: flex;
-        max-width: 100%;
-        flex-wrap: wrap;
-    }
-    
-    .dailyButton {
-        width: 105px;
-    }
-
-    .chart-box {
-        height: 30vh;
-        width: 135vw;
-    }
-
-    /* ----- Shopping Bag Styles ----- */
-    .history-index, .history-size, .history-type {
-        display: none;
-    }
-
-    .table-box, .shopping-form-box { 
-        padding: 0 8px 12px 8px;
-        font-size: 14px;
-    }
-
-    .total-cost-header {
-        padding: 0 0 0 8px;
-    }
-
-    .bag-button-box {
-        width: auto;
-        margin-bottom: 24px;
-    }
-    /* ----- Shopping Bag Styles ----- */
-    .games-header-text {
-        padding: 1em 1em 0 1em;
-    }
-}
-
-@media only screen and (max-width: 769px) {
-    .carousel-feature-slide > img {
-        left: 20%;
-        top: 25%;
-    }
-
-    .carousel-play-slide > .carousel-play-box > img {
-        left: -8%;
-        top: 2em;
-    }
-
-    .carousel-caption {
-        top: 50%;
-    }
-
-    .carousel-caption > h5 {
-        font-size: 32px;
-    }
-    
-    .carousel-feature-text {
-        top: 2%;
-    }
-
-    .carousel-play-text {
-        top: 5%;
-    }
-
-    /* Contact Styles */
-    #keep-touch-text {
-        margin-left: 37%;
-    }
-    
-    .contact-message > h5 {
-        margin-top: 24px;
-    }
-
-    .social-box {
-        height: 30vh;
-        width: 50%;
-    }
-
-    .contact-details {
-        height: 50vh;
-    }
-
-    .contact-message {
-        height: 70vh;
-    }
-}
-
-@media only screen and (max-width: 600px) {
-    .carousel-play-slide > .carousel-play-box > img {
-        bottom: -5em;
-    }
-
-    .carousel-caption {
-        top: 35%;
-    }
-
-    .carousel-feature-text {
-        top: 2%;
-    }
-    
-    .carousel-feature-slide > img {
-        top: 20%;
-    }
-
-    .carousel-play-text {
-        top: 5%;
-        left: 27%;
-    }
-
-    /* Contact Styles */
-    #keep-touch-text {
-        margin-left: 32%;
-    }
-}
-
-@media only screen and (max-width: 415px) {
-    .carousel, .slide {
-        height: 40vh;
-    }
-    
-    .carousel-item, .carousel-play-slide {
-        height: 40vh;
-    }
-
-    .carousel-play-slide > .carousel-play-box > img {
-        left: -10%;
-    }
-
-    .carousel-feature-slide > img {
-        left: 20%;
-        top: 40%;
-    }
-
-    .carousel-play-text {
-        top: 2%;
-        left: 20%;
-    }
-
-    /* Contact Styles */
-    #keep-touch-text {
-        margin-left: 25%;
-    }
-    
-    .social-box {
-        height: 35vh;
-        width: 60%;
-    }
-
-    .contact-details {
-        height: 65vh;
-    }
-
-    .contact-message {
-        height: 70vh;
-    }
-
-    /* ----- Index Styles ----- */
-
-    .sneaker-title, .sneaker-price {
-        font-size: 14px;
-    }
-
-    /* ----- Explore Styles ----- */
-
-    .explore > .cat-group {
-        width: auto;
-    }
-
-    .explore > .sort-group {
-        margin-left: 0px;
-        width: auto;
-    }
-
-    #searchBar {
-        width: 12em;
-    }
-
-    /* ----- Product Styles ----- */
-    .product-title, .product-price, .product-header {
-        font-size: 21px;
-    }
-
-    .product-colorway, .product-release-date, .product-category {
-        font-size: 11px;
-    }
-
-    .product-header {
-        top: -20px;
-    }
-
-    .product-size {
-        margin-right: 1px;
-    }
-
-    .button-group h6 {
-        font-size: 14px;
-    }
-}
-
-@media only screen and (max-width: 376px) {
-    .carousel-caption {
-        top: 32%;
-    }
-
-    .carousel, .slide {
-        height: 37vh;
-    }
-
-    .carousel-item, .carousel-play-slide {
-        height: 35vh;
-    }
-
-    .carousel-item > a > img {
-        height: 100%;
-    }
-
-
-
-    .carousel-play-text {
-        top: 2%;
-        left: 18%;
-    }
-
-    .carousel-play-slide > .carousel-play-box > img {
-        top: 50px
-    }
-
-    .carousel-feature-text {
-        top: 2%;
-        left: 15%;
-    }
-
-    /* Contact Styles */
-    #keep-touch-text {
-        margin-left: 23%;
-    }
-    
-    .contact-message > h5 {
-        margin-top: 24px;
-    }
-
-    .social-box {
-        height: 40vh;
-        width: 70%;
-    }
-
-    .contact-details {
-        height: 70vh;
-    }
-
-    .contact-message {
-        height: 80vh;
-    }
-}
-
-
-@media only screen and (max-width: 360px) {
-    .carousel-caption {
-        top: 40%;
-        left: 15%;
-    }
-
-    .carousel, .slide {
-        height: 40vh;
-    }
-
-    .carousel-item, .carousel-play-slide {
-        height: 37vh;
-    }
-
-    .carousel-play-text {
-        top: 2%;
-        left: 16%;
-    }
-
-    .carousel-play-slide > .carousel-play-box > img {
-        top: 40px
-    }
-
-    .carousel-feature-text {
-        top: 2%;
-    }
-
-    .carousel-caption > h5 {
-        font-size: 24px;
-    }
-    
-    .carousel-caption > p {
-        font-size: 11px;
-    }
-
-    /* Contact Styles */
-    #keep-touch-text {
-        margin-left: 18%;
-    }
-
-    .social-box {
-        height: 45vh;
-    }
-
-    .contact-details {
-        height: 75vh;
-    }
-
-    .contact-message {
-        height: 85vh;
-    }
-
-    .button-group h6 {
-        font-size: 9.3px;
-    }
-
-    .table-head, .table-body {
-        font-size: 10px;
-    }
-}
