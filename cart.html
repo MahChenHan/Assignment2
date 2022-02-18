@@ -4,9 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>IDAssignment2</title>
-    <!--normalize.css & fonts-->
+    <!-- Bootstrap, styling & more -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-	<link href = "normalize.css" rel = "stylesheet"  type="text/css"/>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,7 +13,7 @@
 
 </head>
 <body>
-    <!-- Navigation Bar -->
+    <!-- Nav Bar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white nav-style">
         <div class="container-fluid">
             <a class="navbar-brand" href="index.html"><span style="color: black; font-size: 35px; font-weight: bold;">PlanetCommerce</span></a>
@@ -25,53 +24,43 @@
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item"><a class="nav-link" href="discover.html">Discover</a></li>
-                    <li class="nav-item"><a class="nav-link" href="games.html">Games</a></li>
                     <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
                 </ul>
-                <span class="mobile-line"></span>
                 <span class="nav-item">
-                    <a class="nav-link nav-bag-mobile-box" href="cart.html"><span class="nav-bag-mobile" style="color: #737373;">charset&nbsp;&nbsp;</span><img src="images/shopbag.png" width="50px" height="50px" alt="shopping-bag"/></a>
-                </span>
-                <span class="nav-item">
-                    <!-- Button trigger modal -->
-                    <a class="nav-link" data-bs-toggle="modal" data-bs-target="#login-modal" id="login-text">Login</a>
-                    <a class="nav-link" href="account.html" id="name-text" style="display: none"></a>
+                    <a class="nav-link" href="cart.html"><img src="images/cart.png" width="50px" height="50px" alt="cart"/></a>
                 </span>
             </div>
         </div>
     </nav>
 
-    <!-- Login Modal -->
-    <div class="modal fade" id="login-modal" tabindex="-1">
+    <!-- Checkout modal -->
+    <div class="modal fade" id="checkout-modal" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Login</h5>
+                    <h2 class="modal-title">Checkout</h2>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                
+                </div> 
                 <div class="modal-body">
-                    <form id="login-form">
-                        <small id="login-form-text-error"></small>
+                    <form id="checkout-form">
 
                         <div class="form-group">
-                            <label for="login-name">Account Name</label>
-                            <input type="text" class="form-control" id="login-name" required>
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" id="name" >
                         </div>
-                        
+                    
                         <div class="form-group">
-                            <label for="login-password">Password</label>
-                            <input type="password" class="form-control" id="login-password" required>
+                            <label for="address">Your Address</label>
+                            <input type="text" class="form-control" id="address" >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contact">Contact Number</label>
+                            <input type="tel" class="form-control" id="contact" minlength = "8" maxlength="8" >
                         </div>
                         
                         <div class="button-group">
-                            <button type="submit" class="btn btn-primary hvr-glow" id="login-button">Login</button>
-                            <h6>
-                                &#8195;or&#8194;
-                                <a data-bs-toggle="modal" data-bs-target="#create-modal" id="createModalButton">
-                                    Create Account
-                                </a>
-                            </h6>
+                            <button type="submit" class="btn btn-primary hvr-glow" id="checkout-button" data-bs-toggle="modal" data-bs-target="#spinWheelModal">Checkout</button>
                         </div>
                     </form>
                 </div>
@@ -79,59 +68,24 @@
         </div>
     </div>
 
-    <!-- Create Account Modal -->
-    <div class="modal fade" id="create-modal" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Create Account</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                
-                <div class="modal-body">
-                    <form id="create-form">
-                        <small id="create-form-text-error"></small>
-
-                        <div class="form-group">
-                            <label for="create-name">Account Name</label>
-                            <input type="text" class="form-control" id="create-name" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="create-dob">Date of birth</label>
-                            <input type="date" class="form-control" id="create-dob" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="create-password">Password</label>
-                            <input type="password" class="form-control" id="create-password" required>
-                        </div>
-
-                        <div class="button-group">
-                            <button type="submit" class="btn btn-primary hvr-glow" id="create-button">Create</button>
-                            <h6>
-                                &#8195;or&#8194;
-                                <a data-toggle="modal" data-target="#loginModal" id="loginModalButton">
-                                    Login to an Existing Account
-                                </a>
-                            </h6>
-                        </div>
-                    </form>
+    <!-- Spin the wheel modal -->
+    <div class = "modal fade" id= "spinWheelModal" tabindex="-1">
+        <div class = "modal-dialog">
+            <div class = "modal-content" style = "top: 100px; right: 100px;">
+                <div id = "chart">
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Shopping Bag Header -->
-    <div class="shop-header">
-        <h2>Shopping Bag</h2>
-        <small class="not-loggedin-text">WARNING: Create or Login into an Account to Check Out!</small>
+    <div class="cart-header">
+        <h2>Your Cart</h2>
     </div>
     
-    <!-- Shopping Bag Item Table -->
+    <!-- Listing out items in the cart -->
     <div class="table-box">
         <table class="table table-striped table-hover">
-            <thead class="table-head">
+            <thead class="table-head" style = "background-color: black;">
                 <tr>
                     <th scope="col" class="cart-index" style = "font-weight:normal; font-size: 20px;">#</th>
                     <th scope="col" class="cart-product-img" style = "max-width:10%; "></th>
@@ -148,43 +102,23 @@
         <h4 id="success-purchase-text" style="display: none;">Purchase was successful.</h4>
     </div>
 
-    <!-- Total cost header -->
-    <div class="total-cost-header">
-        <h2>Total Cost</h2>
-        <h2 id="total-cost"></h2> <!-- total-cost ID -->
+    <div class = "row w-100" style ="padding-left: 10%; padding-bottom:10%; padding-right: 0;">
+    <!-- Total cost -->
+        <div class="col total-cost-header" style = "text-align: center; padding-right: 0">
+            <h2>Total Cost</h2>
+            <h2 id="total-cost"></h2>
+        </div>
+
+        <div class = "col checkout-button-box" style = "padding-top: 2.2%; padding-left: 0;">
+            <a class="nav-link" data-bs-toggle="modal" data-bs-target="#checkout-modal" id="checkout-text"><button type = "submit" class = "btn btn-primary hvr-glow checkout-box" id = "checkout-button" style ="font-size: 30px;">Checkout!</button></a>
+            <span style="display: flex; justify-content: center; align-items: center;"></span>
+        </div>
     </div>
 
-    <!-- Total cost form -->
-    <div class="shopping-form-box">
-        <form id="shopping-form">
-            <div class="form-group">
-                <label for="user-name">Name</label>
-                <input type="text" class="form-control" id="user-name" required>
-            </div>
-            <div class="form-group">
-                <label for="shipping-address">Shipping Address</label>
-                <input type="text" class="form-control" id="shipping-address" required>
-            </div>
-            <div class="form-group">
-                <label for="contact-number">Contact Number</label>
-                <input type="tel" class="form-control" id="contact-number" maxlength="8" required>
-            </div>
-            <div class="form-group">
-            <label for="email-address">Email address</label>
-            <input type="email" class="form-control" id="email-address" aria-describedby="emailHelp" required>
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-            </div>
-            <div class="form-group">
-                <label for="special-request">Special requests</label>
-                <textarea class="form-control" id="special-request" rows="3" placeholder="Optional..."></textarea>
-            </div>
-            <div class="bag-button-box">
-                <small id="checkout-button-text" style="display: none;">Insufficient balance! <br>Please topup your account balance!</small>
-                <button type="submit" class="btn btn-primary hvr-glow" id="checkout-button">Check out</button>
-                <span style="display: flex; justify-content: center; align-items: center;"><lottie-player class="checkout-loading" src="assets/img/icons/loading.json" background="transparent" speed="1" style="width: 80px; height: 80px; display: none;" loop autoplay></lottie-player></span>
-            </div>
-        </form>
-    </div>
+    <div class ="row">
+        <a class="nav-link btn btn-primary hvr-glow discover-box" href = "discover.html" id="checkout-text discover-button" style = "margin-left: 40%; max-width: 15%;">Find products!</a>
+        <span style="display: flex; justify-content: center; align-items: center;"></span>
+    </div> 
 
     <!-- Footer -->
     <footer>
@@ -194,10 +128,10 @@
         </div>
     </footer>
 
-
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="js/script.js"></script>
     <script src="js/cart.js"></script>
 </body>
 </html>
